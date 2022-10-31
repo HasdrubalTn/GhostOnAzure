@@ -13,7 +13,7 @@ variables:
   dockerRegistryServiceConnection: 'b9828979-9b5f-4635-9b76-c71f749a153b'
   imageRepository: 'ghostonazure'
   containerRegistry: 'hasdrubal.azurecr.io'
-  dockerfilePath: '*'
+  dockerfilePath: '**'
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
