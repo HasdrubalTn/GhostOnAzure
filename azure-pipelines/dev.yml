@@ -1,0 +1,51 @@
+name: $(BuildID)
+
+trigger:
+  batch: true
+  branches:
+    include:
+    - fix/*
+    - feature/*
+    - main
+  tags:
+    include:
+    - v*
+  paths:
+    exclude:
+    - README.md
+
+pr:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+schedules:
+  - cron: "0 12 * * 0"
+    displayName: Weekly Sunday build
+    always: true
+    branches:
+      include:
+      - main
+
+variables:
+- template: vars/global.yaml
+- template: vars/dev.yaml
+
+stages:
+
+# Build
+# -----
+- stage: DockerStage
+  displayName: Build (Docker)
+  condition: or(eq(variables.isTag,'True'), and(succeeded(), eq(variables.deployMain,'True')))
+  jobs:
+  - template: jobs/docker.yaml
+
+  # Deploy
+  # ------
+- stage: DeployStage
+  displayName: Deploy (App Service)
+  condition: and(succeeded(), eq(variables.deployMain,'True'))
+  jobs:
+  - template: jobs/app-service.yaml
