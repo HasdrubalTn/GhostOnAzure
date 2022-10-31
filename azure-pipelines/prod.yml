@@ -1,0 +1,21 @@
+name: $(BuildID)
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - production
+
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+- template: vars/global.yaml
+- template: vars/prod.yaml
+
+stages:
+- stage: Deployment
+  jobs:
+  - template: jobs/app-service.yaml

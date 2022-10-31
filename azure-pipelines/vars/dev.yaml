@@ -1,0 +1,4 @@
+variables:
+  webAppName:    azurecraftsman
+  blobContainer: azurecraftsman-dev
+  nodeEnvName:   staging
