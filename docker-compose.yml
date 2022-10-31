@@ -22,7 +22,8 @@ services:
    ghost:
      depends_on:
        - db
-     image: ghost:5.20
+     build:
+      dockerfile: ./ghost/Dockerfile
      ports:
        - "3001:2368"
      restart: always
