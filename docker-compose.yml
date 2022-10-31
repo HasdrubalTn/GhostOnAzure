@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+   db:
+     image: mysql:8.0
+     command: --default-authentication-plugin=mysql_native_password
+     volumes:
+       - db_data:/var/lib/mysql
+     restart: always
+     expose:
+       - "3306"
+     ports:
+       - "3306:3306"
+     environment:
+       MYSQL_ROOT_PASSWORD: ghost123
+       MYSQL_DATABASE: ghostdb
+       MYSQL_USER: ghostuser
+       MYSQL_PASSWORD: ghost123
+     networks:
+       - app-tier
+
+   ghost:
+     depends_on:
+       - db
+     image: ghost:5.20
+     ports:
+       - "3001:2368"
+     restart: always
+     environment:
+      database__client: mysql
+      database__connection__host: db
+      database__connection__user: ghostuser
+      database__connection__password: ghost123
+      database__connection__database: ghostdb
+     networks:
+      - app-tier
+
+volumes:
+    db_data:
+networks:
+    app-tier:
+      driver: bridge
