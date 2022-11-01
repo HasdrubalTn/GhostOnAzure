@@ -1,8 +1,8 @@
 variables:
 
   # ARM
-  armConnection:    azurecraftsman-rg-conn
-  acrConnection:    azurecraftsman-acr-conn
+  armConnection:    armconnection
+  acrConnection:    hasdrubal
   resourceGroup:    GHOST-BLOG-RG
   storageAccount:   azurecraftsman-storage
 

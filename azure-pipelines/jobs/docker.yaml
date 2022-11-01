@@ -2,26 +2,28 @@ jobs:
 - job: BuildAndScan
   displayName: Build and Scan
   steps:
+  - task: AzureKeyVault@2
+    inputs:
+      azureSubscription: $(armConnection)
+      KeyVaultName: 'ghost-dev-kv'
+      SecretsFilter: '*'
+      RunAsPreJob: true
   - template: ../steps/debug-vars.yaml
 
   - bash: |
       docker build -t $(dockerImage):$(imageTag) .
     displayName: Docker - build
 
-  # - task: SnykSecurityScan@0
-  #   displayName: Snyk - security scan
-  #   continueOnError: true
-  #   inputs:
-  #     serviceConnectionEndpoint: 'snyk-api-connection'
-  #     testType: 'container'
-  #     dockerImageName: $(dockerImage):$(imageTag)
-  #     dockerfilePath: 'Dockerfile'
-  #     monitorOnBuild: true
-
 - job: DockerPush
   displayName: Push
   dependsOn: BuildAndScan
   steps:
+  - task: AzureKeyVault@2
+    inputs:
+      azureSubscription: $(armConnection)
+      KeyVaultName: 'ghost-dev-kv'
+      SecretsFilter: '*'
+      RunAsPreJob: true
   - template: ../steps/debug-vars.yaml
 
   - task: Docker@2
