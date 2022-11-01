@@ -15,7 +15,7 @@ jobs:
       action: Build services
       azureSubscriptionEndpoint: $(armConnection)
       azureContainerRegistry: $(acrConnection)
-      dockerComposeFile: docker-compose.yml
+      dockerComposeFile: '**/docker-compose.yml'
       projectName: $(Build.Repository.Name)
       qualifyImageNames: true
       additionalImageTags: $(Build.BuildId)
@@ -41,7 +41,7 @@ jobs:
       action: Push services
       azureSubscriptionEndpoint: $(armConnection)
       azureContainerRegistry: $(acrConnection)
-      dockerComposeFile: docker-compose.yml
+      dockerComposeFile: '**/docker-compose.yml'
       projectName: $(Build.Repository.Name)
       qualifyImageNames: true
       additionalImageTags: $(Build.BuildId)
@@ -53,7 +53,7 @@ jobs:
       action: Lock services
       azureSubscriptionEndpoint: $(armConnection)
       azureContainerRegistry: $(acrConnection)
-      dockerComposeFile: docker-compose.yml
+      dockerComposeFile: '**/docker-compose.yml'
       projectName: $(Build.Repository.Name)
       qualifyImageNames: true
       outputDockerComposeFile: $(Build.StagingDirectory)/docker-compose.yml
