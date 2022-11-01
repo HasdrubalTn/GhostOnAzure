@@ -16,17 +16,11 @@ jobs:
 
   - template: ../steps/debug-vars.yaml
 
-  - task: AzureRmWebAppDeployment@4
-    displayName: Deploy Web App Container
+  - task: DockerCompose@0
     inputs:
-      ConnectionType: 'AzureRM'
+      containerregistrytype: 'Azure Container Registry'
       azureSubscription: $(armConnection)
-      appType: 'webAppContainer'
-      WebAppName: $(webAppName)
-      deployToSlotOrASE: true
-      ResourceGroupName: $(resourceGroup)
-      SlotName: 'production'
-      DockerNamespace: 'hasdrubal.azurecr.io'
-      DockerRepository: 'ghostonazure'
-      DockerImageTag: $(imageTag)
-      appSettings: -PORT 2368 -WEBSITES_PORT 8080 -NODE_ENV $(nodeEnvName) -ASSETS_BASE_URL "https://$(webAppName).azurewebsites.net"
+      azureContainerRegistry: $(acrConnection)
+      dockerComposeFile: '**/docker-compose.yml'
+      action: 'Run a Docker Compose command'
+      dockerComposeCommand: 'rm --all'
