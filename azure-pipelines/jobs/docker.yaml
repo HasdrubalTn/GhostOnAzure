@@ -9,7 +9,6 @@ jobs:
       SecretsFilter: '*'
       RunAsPreJob: true
   - template: ../steps/debug-vars.yaml
-
   - task: DockerCompose@0
     inputs:
       action: Build services
@@ -20,7 +19,6 @@ jobs:
       qualifyImageNames: true
       additionalImageTags: $(Build.BuildId)
       displayName: Build services
-
 - job: DockerPush
   displayName: Push
   dependsOn: BuildAndScan
@@ -32,9 +30,7 @@ jobs:
       SecretsFilter: '*'
       RunAsPreJob: true
   - template: ../steps/debug-vars.yaml
-
   - template: ../steps/append-sha.yaml
-
   - task: DockerCompose@0
     displayName: Push services
     inputs:
@@ -45,7 +41,6 @@ jobs:
       projectName: $(Build.Repository.Name)
       qualifyImageNames: true
       additionalImageTags: $(Build.BuildId)
-
   - task: DockerCompose@0
     displayName: Lock services
     condition: eq(variables.isTag, 'True')
