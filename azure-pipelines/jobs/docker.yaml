@@ -7,7 +7,7 @@ jobs:
     inputs:
       action: Build services
       azureSubscriptionEndpoint: 'armconnection'
-      azureContainerRegistry: 'acrconnection'
+      azureContainerRegistry: '{"loginServer":"hasdrubal.azurecr.io", "id" : "/subscriptions/875bb2e2-ee51-4775-9138-5395a9a1ff92/resourceGroups/GHOST-BLOG-RG/providers/Microsoft.ContainerRegistry/registries/hasdrubal"}'
       dockerComposeFile: '**/docker-compose.yml'
       projectName: $(Build.Repository.Name)
       qualifyImageNames: true
@@ -26,7 +26,7 @@ jobs:
     inputs:
       action: Push services
       azureSubscriptionEndpoint: 'armconnection'
-      azureContainerRegistry: 'acrconnection'
+      azureContainerRegistry: '{"loginServer":"hasdrubal.azurecr.io", "id" : "/subscriptions/875bb2e2-ee51-4775-9138-5395a9a1ff92/resourceGroups/GHOST-BLOG-RG/providers/Microsoft.ContainerRegistry/registries/hasdrubal"}'
       dockerComposeFile: '**/docker-compose.yml'
       projectName: $(Build.Repository.Name)
       qualifyImageNames: true
@@ -37,7 +37,7 @@ jobs:
     inputs:
       action: Lock services
       azureSubscriptionEndpoint: 'armconnection'
-      azureContainerRegistry: 'acrconnection'
+      azureContainerRegistry: '{"loginServer":"hasdrubal.azurecr.io", "id" : "/subscriptions/875bb2e2-ee51-4775-9138-5395a9a1ff92/resourceGroups/GHOST-BLOG-RG/providers/Microsoft.ContainerRegistry/registries/hasdrubal"}'
       dockerComposeFile: '**/docker-compose.yml'
       projectName: $(Build.Repository.Name)
       qualifyImageNames: true
