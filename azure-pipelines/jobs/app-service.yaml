@@ -4,7 +4,7 @@ jobs:
   steps:
   - task: AzureKeyVault@2
     inputs:
-      azureSubscription: $(armConnection)
+      azureSubscription: $(armconnection)
       KeyVaultName: 'ghost-dev-kv'
       SecretsFilter: '*'
       RunAsPreJob: true
@@ -19,8 +19,8 @@ jobs:
   - task: DockerCompose@0
     inputs:
       containerregistrytype: 'Azure Container Registry'
-      azureSubscription: $(armConnection)
-      azureContainerRegistry: $(acrConnection)
-      dockerComposeFile: '**/docker-compose.yml'
+      azureSubscription: $(armconnection)
+      azureContainerRegistry: $(acrconnection)
+      dockerComposeFile: docker-compose.yml
       action: 'Run a Docker Compose command'
       dockerComposeCommand: 'rm --all'
