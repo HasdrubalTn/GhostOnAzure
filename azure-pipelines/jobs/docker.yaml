@@ -4,12 +4,6 @@ jobs:
   steps:
   - template: ../steps/debug-vars.yaml
   - task: DockerCompose@0
-    displayName: Container registry login
-    inputs:
-      containerregistrytype: Azure Container Registry
-      azureSubscriptionEndpoint: $(armconnection)
-      azureContainerRegistry: $(acrconnection)
-  - task: DockerCompose@0
     inputs:
       action: Build services
       azureSubscriptionEndpoint: $(armconnection)
