@@ -29,4 +29,4 @@ jobs:
       DockerNamespace: 'hasdrubal.azurecr.io'
       DockerRepository: 'ghostonazure'
       DockerImageTag: $(imageTag)
-      appSettings: -PORT 2368 -WEBSITES_PORT 3001 -NODE_ENV $(nodeEnvName) -ASSETS_BASE_URL "https://$(webAppName).azurewebsites.net"
+      appSettings: -PORT 2368 -WEBSITES_PORT 8080 -NODE_ENV $(nodeEnvName) -ASSETS_BASE_URL "https://$(webAppName).azurewebsites.net"

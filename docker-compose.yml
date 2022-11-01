@@ -26,7 +26,7 @@ services:
        - db
      image: ghost:5.20
      ports:
-       - "3001:2368"
+       - "8080:2368"
      restart: always
      environment:
       database__client: mysql
@@ -34,6 +34,7 @@ services:
       database__connection__user: ghostuser
       database__connection__password: ghost123
       database__connection__database: ghostdb
+      url: http://localhost:8080
      networks:
       - app-tier
 
