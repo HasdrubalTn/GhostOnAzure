@@ -10,9 +10,16 @@ jobs:
       RunAsPreJob: true
   - template: ../steps/debug-vars.yaml
 
-  - bash: |
-      docker build -t $(dockerImage):$(imageTag) .
-    displayName: Docker - build
+  - task: DockerCompose@0
+    inputs:
+      action: Build services
+      azureSubscriptionEndpoint: $(armConnection)
+      azureContainerRegistry: $(acrConnection)
+      dockerComposeFile: docker-compose.yml
+      projectName: $(Build.Repository.Name)
+      qualifyImageNames: true
+      additionalImageTags: $(Build.BuildId)
+      displayName: Build services
 
 - job: DockerPush
   displayName: Push
