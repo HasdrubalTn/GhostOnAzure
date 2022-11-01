@@ -6,9 +6,9 @@ jobs:
   - task: DockerCompose@0
     inputs:
       action: Build services
-      azureSubscriptionEndpoint: 'armconnection'
-      azureContainerRegistry: '{"loginServer":"hasdrubal.azurecr.io", "id" : "/subscriptions/875bb2e2-ee51-4775-9138-5395a9a1ff92/resourceGroups/GHOST-BLOG-RG/providers/Microsoft.ContainerRegistry/registries/hasdrubal"}'
-      dockerComposeFile: '**/docker-compose.yml'
+      azureSubscriptionEndpoint: armconnection
+      azureContainerRegistry: acrconnection
+      dockerComposeFile: 'docker-compose.yml'
       projectName: $(Build.Repository.Name)
       qualifyImageNames: true
       additionalImageTags: $(Build.BuildId)
@@ -25,9 +25,9 @@ jobs:
     displayName: Push services
     inputs:
       action: Push services
-      azureSubscriptionEndpoint: 'armconnection'
-      azureContainerRegistry: '{"loginServer":"hasdrubal.azurecr.io", "id" : "/subscriptions/875bb2e2-ee51-4775-9138-5395a9a1ff92/resourceGroups/GHOST-BLOG-RG/providers/Microsoft.ContainerRegistry/registries/hasdrubal"}'
-      dockerComposeFile: '**/docker-compose.yml'
+      azureSubscriptionEndpoint: armconnection
+      azureContainerRegistry: acrconnection
+      dockerComposeFile: 'docker-compose.yml'
       projectName: $(Build.Repository.Name)
       qualifyImageNames: true
       additionalImageTags: $(Build.BuildId)
@@ -36,9 +36,9 @@ jobs:
     condition: eq(variables.isTag, 'True')
     inputs:
       action: Lock services
-      azureSubscriptionEndpoint: 'armconnection'
-      azureContainerRegistry: '{"loginServer":"hasdrubal.azurecr.io", "id" : "/subscriptions/875bb2e2-ee51-4775-9138-5395a9a1ff92/resourceGroups/GHOST-BLOG-RG/providers/Microsoft.ContainerRegistry/registries/hasdrubal"}'
-      dockerComposeFile: '**/docker-compose.yml'
+      azureSubscriptionEndpoint: armconnection
+      azureContainerRegistry: acrconnection
+      dockerComposeFile: 'docker-compose.yml'
       projectName: $(Build.Repository.Name)
       qualifyImageNames: true
       outputDockerComposeFile: $(Build.StagingDirectory)/docker-compose.yml
