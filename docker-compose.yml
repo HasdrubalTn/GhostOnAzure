@@ -24,8 +24,7 @@ services:
      container_name: azurecraftsman
      depends_on:
        - db
-     build:
-      dockerfile: ./ghost/Dockerfile
+     image: ghost:5.20
      ports:
        - "3001:2368"
      restart: always
