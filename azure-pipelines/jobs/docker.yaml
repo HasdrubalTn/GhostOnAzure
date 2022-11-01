@@ -33,6 +33,8 @@ jobs:
       RunAsPreJob: true
   - template: ../steps/debug-vars.yaml
 
+  - template: ../steps/append-sha.yaml
+
   - task: DockerCompose@0
     displayName: Push services
     inputs:

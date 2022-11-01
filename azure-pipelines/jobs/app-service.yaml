@@ -16,10 +16,17 @@ jobs:
 
   - template: ../steps/debug-vars.yaml
 
-  - task: AzureWebAppContainer@1
+  - task: AzureRmWebAppDeployment@4
     displayName: Deploy Web App Container
     inputs:
-      appName:  $(webAppName)
+      ConnectionType: 'AzureRM'
       azureSubscription: $(armConnection)
-      imageName: $(dockerImage):$(imageTag)
+      appType: 'webAppContainer'
+      WebAppName: $(webAppName)
+      deployToSlotOrASE: true
+      ResourceGroupName: $(resourceGroup)
+      SlotName: 'production'
+      DockerNamespace: 'hasdrubal.azurecr.io'
+      DockerRepository: 'ghostonazure'
+      DockerImageTag: 'dev*'
       appSettings: -PORT 2368 -WEBSITES_PORT 2368 -NODE_ENV $(nodeEnvName) -ASSETS_BASE_URL "https://$(webAppName).azurewebsites.net"
