@@ -1,8 +1,7 @@
 variables:
 
   # ARM
-  armConnection:    armconnection
-  acrConnection:    acrConnection
+  armconnection:    armconnection
   resourceGroup:    GHOST-BLOG-RG
   storageAccount:   azurecraftsman-storage
 
@@ -17,7 +16,7 @@ variables:
   deployMain:       ${{ and( eq(variables.isMain,'True'), eq(variables.isTrustedCI,'True') ) }}
 
   # Docker
-  dockerRegistry:   hasdrubal.azurecr.io
+  acrconnection:   hasdrubal.azurecr.io
   imageName:        azurecraftsman
   ${{ if eq(variables.isTag, 'False') }}:
     imageTag:       dev
