@@ -42,8 +42,8 @@ stages:
   jobs:
   - template: jobs/docker.yaml
 
-  # Deploy
-  # ------
+# Deploy
+# ------
 - stage: DeployStage
   displayName: Deploy (App Service)
   condition: and(succeeded(), eq(variables.deployMain,'True'))
