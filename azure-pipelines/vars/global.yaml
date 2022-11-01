@@ -1,7 +1,7 @@
 variables:
 
   # ARM
-  armConnection:    azureSubscription
+  armConnection:    armconnection
   acrConnection:    hasdrubal
   resourceGroup:    GHOST-BLOG-RG
   storageAccount:   azurecraftsman-storage
