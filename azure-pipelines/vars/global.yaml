@@ -2,7 +2,7 @@ variables:
 
   # ARM
   armConnection:    armconnection
-  acrConnection:    hasdrubal
+  acrConnection:    acrConnection
   resourceGroup:    GHOST-BLOG-RG
   storageAccount:   azurecraftsman-storage
 
