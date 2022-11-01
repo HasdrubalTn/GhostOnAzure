@@ -14,6 +14,8 @@ steps:
     echo '===== DOCKER ====='
     echo 'imageTag:       $(imageTag)'
     echo 'dockerImage:    $(dockerImage)'
+    echo 'armconnection:  $(armconnection)'
+    echo 'acrconnection:  $(acrconnection)'
     echo ''
 
     echo '===== DEPLOYMENT ====='
