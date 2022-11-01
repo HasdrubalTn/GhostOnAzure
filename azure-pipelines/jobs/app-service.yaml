@@ -2,7 +2,12 @@ jobs:
 - job: AppService
   displayName: Deploy to App Service
   steps:
-
+  - task: AzureKeyVault@2
+    inputs:
+      azureSubscription: $(armConnection)
+      KeyVaultName: 'ghost-dev-kv'
+      SecretsFilter: '*'
+      RunAsPreJob: true
   - script: echo "##vso[task.setvariable variable=imageTag]$(npm run --silent my-version)"
     displayName: Image Tag - use app version
     condition: eq(variables.isProduction, 'True')

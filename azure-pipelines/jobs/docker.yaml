@@ -2,6 +2,12 @@ jobs:
 - job: BuildAndScan
   displayName: Build and Scan
   steps:
+  - task: AzureKeyVault@2
+    inputs:
+      azureSubscription: $(armConnection)
+      KeyVaultName: 'ghost-dev-kv'
+      SecretsFilter: '*'
+      RunAsPreJob: true
   - template: ../steps/debug-vars.yaml
 
   - bash: |
@@ -22,6 +28,12 @@ jobs:
   displayName: Push
   dependsOn: BuildAndScan
   steps:
+  - task: AzureKeyVault@2
+    inputs:
+      azureSubscription: $(armConnection)
+      KeyVaultName: 'ghost-dev-kv'
+      SecretsFilter: '*'
+      RunAsPreJob: true
   - template: ../steps/debug-vars.yaml
 
   - task: Docker@2
