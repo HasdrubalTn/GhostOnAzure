@@ -33,34 +33,25 @@ jobs:
       RunAsPreJob: true
   - template: ../steps/debug-vars.yaml
 
-  - task: Docker@2
-    displayName: Docker - Login
+  - task: DockerCompose@0
+    displayName: Push services
     inputs:
-      command: login
-      containerRegistry: $(acrConnection)
+      action: Push services
+      azureSubscriptionEndpoint: $(armConnection)
+      azureContainerRegistry: $(acrConnection)
+      dockerComposeFile: docker-compose.yml
+      projectName: $(Build.Repository.Name)
+      qualifyImageNames: true
+      additionalImageTags: $(Build.BuildId)
 
-  - template: ../steps/append-sha.yaml
-
-  - bash: |
-      docker build -t $(dockerImage):$(imageTag) .
-      docker push $(dockerImage):$(imageTag)
-    displayName: Docker - Build and Push
-
-  - task: Docker@2
-    displayName: Docker - Logout
-    inputs:
-      command: logout
-      containerRegistry: $(acrConnection)
-
-  - task: AzureCLI@2
-    displayName: 'ACR - lock production image'
+  - task: DockerCompose@0
+    displayName: Lock services
     condition: eq(variables.isTag, 'True')
     inputs:
-      azureSubscription: $(armConnection)
-      scriptType: bash
-      scriptLocation: inlineScript
-      inlineScript: |
-        az acr repository update \
-          --name $(dockerRegistry) \
-          --image $(imageName):$(imageTag) \
-          --write-enabled false
+      action: Lock services
+      azureSubscriptionEndpoint: $(armConnection)
+      azureContainerRegistry: $(acrConnection)
+      dockerComposeFile: docker-compose.yml
+      projectName: $(Build.Repository.Name)
+      qualifyImageNames: true
+      outputDockerComposeFile: $(Build.StagingDirectory)/docker-compose.yml
