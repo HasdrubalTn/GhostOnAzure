@@ -28,5 +28,5 @@ jobs:
       SlotName: 'production'
       DockerNamespace: 'hasdrubal.azurecr.io'
       DockerRepository: 'ghostonazure'
-      DockerImageTag: 'dev*'
+      DockerImageTag: $(imageTag)
       appSettings: -PORT 2368 -WEBSITES_PORT 2368 -NODE_ENV $(nodeEnvName) -ASSETS_BASE_URL "https://$(webAppName).azurewebsites.net"
