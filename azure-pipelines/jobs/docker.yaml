@@ -5,6 +5,7 @@ jobs:
   - template: ../steps/debug-vars.yaml
 
   - task: DockerCompose@0
+    displayName: Build services
     inputs:
       action: Buils services
       containerregistrytype: 'Azure Container Registry'
