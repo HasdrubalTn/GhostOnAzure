@@ -8,10 +8,7 @@ trigger:
     - feature/*
     - develop
     - main
-  tags:
-    include:
-    - dev-*
-    - prod-*
+
   paths:
     exclude:
     - README.md
