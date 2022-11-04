@@ -16,7 +16,6 @@ variables:
   deployMain:       ${{ and( eq(variables.isMain,'True'), eq(variables.isTrustedCI,'True') ) }}
 
   # Docker
-  acrconnection:    hasdrubal.azurecr.io
   imageName:        azurecraftsman
   ${{ if eq(variables.isTag, 'False') }}:
     imageTag:       dev

@@ -6,6 +6,7 @@ trigger:
     include:
     - fix/*
     - feature/*
+    - develop
     - main
   tags:
     include:
