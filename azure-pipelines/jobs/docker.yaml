@@ -7,9 +7,9 @@ jobs:
   - task: DockerCompose@0
     inputs:
       containerregistrytype: 'Azure Container Registry'
-      azureSubscription: 'acrconnection'
+      azureSubscription: 'Visual Studio Premium avec MSDN (875bb2e2-ee51-4775-9138-5395a9a1ff92)'
       azureContainerRegistry: '{"loginServer":"hasdrubal.azurecr.io", "id" : "/subscriptions/875bb2e2-ee51-4775-9138-5395a9a1ff92/resourceGroups/GHOST-BLOG-RG/providers/Microsoft.ContainerRegistry/registries/hasdrubal"}'
-      dockerComposeFile: '**/docker-compose.yml'
+      dockerFile: 'docker-compose.yml'
       action: 'Build services'
       includeSourceTags: true
       includeLatestTag: true
@@ -27,9 +27,9 @@ jobs:
     inputs:
       action: Push services
       containerregistrytype: 'Azure Container Registry'
-      azureSubscription: 'acrconnection'
+      azureSubscription: 'Visual Studio Premium avec MSDN (875bb2e2-ee51-4775-9138-5395a9a1ff92)'
       azureContainerRegistry: '{"loginServer":"hasdrubal.azurecr.io", "id" : "/subscriptions/875bb2e2-ee51-4775-9138-5395a9a1ff92/resourceGroups/GHOST-BLOG-RG/providers/Microsoft.ContainerRegistry/registries/hasdrubal"}'
-      dockerComposeFile: '**/docker-compose.yml'
+      dockerFile: 'docker-compose.yml'
       includeSourceTags: true
       includeLatestTag: true
 
@@ -39,8 +39,8 @@ jobs:
     inputs:
       action: Lock services
       containerregistrytype: 'Azure Container Registry'
-      azureSubscription: 'acrconnection'
+      azureSubscription: 'Visual Studio Premium avec MSDN (875bb2e2-ee51-4775-9138-5395a9a1ff92)'
       azureContainerRegistry: '{"loginServer":"hasdrubal.azurecr.io", "id" : "/subscriptions/875bb2e2-ee51-4775-9138-5395a9a1ff92/resourceGroups/GHOST-BLOG-RG/providers/Microsoft.ContainerRegistry/registries/hasdrubal"}'
-      dockerComposeFile: '**/docker-compose.yml'
+      dockerFile: 'docker-compose.yml'
       qualifyImageNames: true
       outputDockerComposeFile: $(Build.StagingDirectory)/docker-compose.yml
