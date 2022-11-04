@@ -10,7 +10,8 @@ trigger:
     - main
   tags:
     include:
-    - v*
+    - dev-*
+    - prod-*
   paths:
     exclude:
     - README.md
