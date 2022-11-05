@@ -5,16 +5,6 @@ jobs:
   - template: ../steps/debug-vars.yaml
 
   - task: DockerCompose@0
-    displayName: 'Run Service'
-    inputs:
-      containerregistrytype: 'Azure Container Registry'
-      azureSubscription: 'armconnection'
-      azureContainerRegistry: 'hasdrubal.azurecr.io'
-      dockerComposeFile: 'docker-compose.yml'
-      action: 'Run services'
-      detached: false
-
-  - task: DockerCompose@0
     displayName: Build services
     inputs:
       action: Buils services
