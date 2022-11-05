@@ -11,7 +11,7 @@ jobs:
       connectiontype: 'AzureRM'
       containerregistrytype: 'Azure Container Registry'
       azureSubscription: 'Visual Studio Premium avec MSDN (875bb2e2-ee51-4775-9138-5395a9a1ff92)'
-      azureContainerRegistry: 'hasdrubal'
+      azureContainerRegistry: hasdrubal.azurecr.io
       dockerComposeFile: docker-compose.yml
       projectName: $(Build.Repository.Name)
       includeSourceTags: true
@@ -32,7 +32,7 @@ jobs:
       connectiontype: 'AzureRM'
       containerregistrytype: 'Azure Container Registry'
       azureSubscription: 'Visual Studio Premium avec MSDN (875bb2e2-ee51-4775-9138-5395a9a1ff92)'
-      azureContainerRegistry: 'hasdrubal'
+      azureContainerRegistry: hasdrubal.azurecr.io
       dockerComposeFile: docker-compose.yml
       projectName: $(Build.Repository.Name)
       includeSourceTags: true
@@ -46,7 +46,7 @@ jobs:
       connectiontype: 'AzureRM'
       containerregistrytype: 'Azure Container Registry'
       azureSubscription: 'Visual Studio Premium avec MSDN (875bb2e2-ee51-4775-9138-5395a9a1ff92)'
-      azureContainerRegistry: 'hasdrubal'
+      azureContainerRegistry: hasdrubal.azurecr.io
       dockerComposeFile: docker-compose.yml
       projectName: $(Build.Repository.Name)
       qualifyImageNames: true
