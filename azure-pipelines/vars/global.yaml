@@ -5,6 +5,7 @@ variables:
   resourceGroup:    GHOST-BLOG-RG
   storageAccount:   azurecraftsman-storage
 
+
   # Pipeline conditions
   isMain:           ${{ eq(variables['Build.SourceBranch'], 'refs/heads/main') }}
   isProduction:     ${{ eq(variables['Build.SourceBranch'], 'refs/heads/production') }}
