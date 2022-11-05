@@ -1,5 +1,4 @@
-version: '3.8'
-
+version: '3.9'
 services:
    db:
      container_name: azurecraftsmandb
@@ -9,8 +8,8 @@ services:
        - db_data:/var/lib/mysql
      restart: always
      expose:
-      - 3306
-      - 33060
+       - 3306
+       - 33060
      environment:
        MYSQL_ROOT_PASSWORD: ghost123
        MYSQL_DATABASE: ghostdb
@@ -30,12 +29,12 @@ services:
        - "8080:2368"
      restart: always
      environment:
-      database__client: mysql
-      database__connection__host: db
-      database__connection__user: ghostuser
-      database__connection__password: ghost123
-      database__connection__database: ghostdb
-      url: http://localhost:8080
+       database__client: mysql
+       database__connection__host: db
+       database__connection__user: ghostuser
+       database__connection__password: ghost123
+       database__connection__database: ghostdb
+       url: http://localhost:8080
      networks:
        - app-tier
 
@@ -44,4 +43,4 @@ volumes:
     ghost_data:
 networks:
     app-tier:
-      driver: bridge
+       driver: bridge
