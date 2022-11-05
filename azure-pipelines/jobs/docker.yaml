@@ -9,12 +9,14 @@ jobs:
     inputs:
       action: Buils services
       containerregistrytype: 'Azure Container Registry'
-      azureSubscription: 'armconnection'
+      azureSubscriptionEndpoint: 'armconnection'
       azureContainerRegistry: 'hasdrubal.azurecr.io'
       dockerComposeFile: docker-compose.yml
       projectName: $(Build.Repository.Name)
       includeSourceTags: true
       includeLatestTag: true
+      qualifyImageNames: true
+      additionalImageTags: $(Build.BuildId)
 
 - job: DockerPush
   displayName: Push
@@ -29,7 +31,7 @@ jobs:
     inputs:
       action: Push services
       containerregistrytype: 'Azure Container Registry'
-      azureSubscription: 'armconnection'
+      azureSubscriptionEndpoint: 'armconnection'
       azureContainerRegistry: 'hasdrubal.azurecr.io'
       dockerComposeFile: docker-compose.yml
       projectName: $(Build.Repository.Name)
@@ -42,7 +44,7 @@ jobs:
     inputs:
       action: Lock services
       containerregistrytype: 'Azure Container Registry'
-      azureSubscription: 'armconnection'
+      azureSubscriptionEndpoint: 'armconnection'
       azureContainerRegistry: 'hasdrubal.azurecr.io'
       dockerComposeFile: docker-compose.yml
       projectName: $(Build.Repository.Name)
