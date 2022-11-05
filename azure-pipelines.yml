@@ -23,3 +23,15 @@ steps:
     action: 'Build services'
     includeSourceTags: true
     includeLatestTag: true
+    
+- task: DockerCompose@0
+  inputs:
+    containerregistrytype: 'Azure Container Registry'
+    azureSubscription: 'Visual Studio Premium avec MSDN (875bb2e2-ee51-4775-9138-5395a9a1ff92)'
+    azureContainerRegistry: '{"loginServer":"hasdrubal.azurecr.io", "id" : "/subscriptions/875bb2e2-ee51-4775-9138-5395a9a1ff92/resourceGroups/GHOST-BLOG-RG/providers/Microsoft.ContainerRegistry/registries/hasdrubal"}'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Push services'
+    includeSourceTags: true
+    includeLatestTag: true
+
+
