@@ -10,7 +10,7 @@ jobs:
       containerregistrytype: 'Azure Container Registry'
       azureSubscriptionEndpoint: 'armconnection'
       azureContainerRegistry: 'hasdrubal.azurecr.io'
-      dockerComposeFile: '../docker-compose.yml'
+      dockerComposeFile: '../../docker-compose.yml'
       dockerComposeFileArgs: 'DOCKER_BUILD_SOURCE='
       projectName: $(Build.Repository.Name)
       includeSourceTags: true
@@ -29,7 +29,7 @@ jobs:
       containerregistrytype: 'Azure Container Registry'
       azureSubscriptionEndpoint: 'armconnection'
       azureContainerRegistry: 'hasdrubal.azurecr.io'
-      dockerComposeFile: '../docker-compose.yml'
+      dockerComposeFile: '../../docker-compose.yml'
       dockerComposeFileArgs: 'DOCKER_BUILD_SOURCE='
       projectName: $(Build.Repository.Name)
       qualifyImageNames: true
@@ -42,7 +42,7 @@ jobs:
       containerregistrytype: 'Azure Container Registry'
       azureSubscriptionEndpoint: 'armconnection'
       azureContainerRegistry: 'hasdrubal.azurecr.io'
-      dockerComposeFile: '../docker-compose.yml'
+      dockerComposeFile: '../../docker-compose.yml'
       dockerComposeFileArgs: 'DOCKER_BUILD_SOURCE='
       projectName: $(Build.Repository.Name)
       qualifyImageNames: true
