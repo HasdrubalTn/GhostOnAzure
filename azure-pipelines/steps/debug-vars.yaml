@@ -23,4 +23,10 @@ steps:
     echo 'blobContainer:  $(blobContainer)'
     echo 'cdnEndpoint:    $(cdnEndpoint)'
     echo ''
+
+    echo '===== BUILD ====='
+    echo 'buildID:        $(BuildID)'
+    echo 'buildID:        $(Build.BuildId)'
+    echo ''
+
   displayName: Debug - Variables
