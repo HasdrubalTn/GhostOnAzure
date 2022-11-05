@@ -5,13 +5,22 @@ jobs:
   - template: ../steps/debug-vars.yaml
 
   - task: DockerCompose@0
+    displayName: 'Run Service'
+    inputs:
+      containerregistrytype: 'Azure Container Registry'
+      azureSubscription: 'armconnection'
+      azureContainerRegistry: 'hasdrubal.azurecr.io'
+      dockerComposeFile: 'docker-compose.yml'
+      action: 'Run services'
+      detached: false
+
+  - task: DockerCompose@0
     displayName: Build services
     inputs:
       action: Buils services
-      connectiontype: 'AzureRM'
       containerregistrytype: 'Azure Container Registry'
-      azureSubscription: 'Visual Studio Premium avec MSDN (875bb2e2-ee51-4775-9138-5395a9a1ff92)'
-      azureContainerRegistry: '{"loginServer":"hasdrubal.azurecr.io", "id" : "/subscriptions/875bb2e2-ee51-4775-9138-5395a9a1ff92/resourceGroups/GHOST-BLOG-RG/providers/Microsoft.ContainerRegistry/registries/hasdrubal"}'
+      azureSubscription: 'armconnection'
+      azureContainerRegistry: 'hasdrubal.azurecr.io'
       dockerComposeFile: docker-compose.yml
       projectName: $(Build.Repository.Name)
       includeSourceTags: true
@@ -29,10 +38,9 @@ jobs:
     displayName: Push services
     inputs:
       action: Push services
-      connectiontype: 'AzureRM'
       containerregistrytype: 'Azure Container Registry'
-      azureSubscription: 'Visual Studio Premium avec MSDN (875bb2e2-ee51-4775-9138-5395a9a1ff92)'
-      azureContainerRegistry: '{"loginServer":"hasdrubal.azurecr.io", "id" : "/subscriptions/875bb2e2-ee51-4775-9138-5395a9a1ff92/resourceGroups/GHOST-BLOG-RG/providers/Microsoft.ContainerRegistry/registries/hasdrubal"}'
+      azureSubscription: 'armconnection'
+      azureContainerRegistry: 'hasdrubal.azurecr.io'
       dockerComposeFile: docker-compose.yml
       projectName: $(Build.Repository.Name)
       includeSourceTags: true
@@ -43,10 +51,9 @@ jobs:
     condition: eq(variables.isTag, 'True')
     inputs:
       action: Lock services
-      connectiontype: 'AzureRM'
       containerregistrytype: 'Azure Container Registry'
-      azureSubscription: 'Visual Studio Premium avec MSDN (875bb2e2-ee51-4775-9138-5395a9a1ff92)'
-      azureContainerRegistry: '{"loginServer":"hasdrubal.azurecr.io", "id" : "/subscriptions/875bb2e2-ee51-4775-9138-5395a9a1ff92/resourceGroups/GHOST-BLOG-RG/providers/Microsoft.ContainerRegistry/registries/hasdrubal"}'
+      azureSubscription: 'armconnection'
+      azureContainerRegistry: 'hasdrubal.azurecr.io'
       dockerComposeFile: docker-compose.yml
       projectName: $(Build.Repository.Name)
       qualifyImageNames: true
