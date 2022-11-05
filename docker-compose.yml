@@ -9,9 +9,8 @@ services:
        - db_data:/var/lib/mysql
      restart: always
      expose:
-       - "3306"
-     ports:
-       - "3306:3306"
+      - 3306
+      - 33060
      environment:
        MYSQL_ROOT_PASSWORD: ghost123
        MYSQL_DATABASE: ghostdb
@@ -25,6 +24,8 @@ services:
      depends_on:
        - db
      image: ghost:5.20
+     volumes:
+       - ghost_data:/var/lib/ghost
      ports:
        - "8080:2368"
      restart: always
@@ -40,6 +41,7 @@ services:
 
 volumes:
     db_data:
+    ghost_data:
 networks:
     app-tier:
       driver: bridge
