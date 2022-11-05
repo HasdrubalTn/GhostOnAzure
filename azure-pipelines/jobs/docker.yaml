@@ -8,6 +8,7 @@ jobs:
     displayName: Build services
     inputs:
       action: Buils services
+      connectiontype: 'AzureRM'
       containerregistrytype: 'Azure Container Registry'
       azureSubscription: 'Visual Studio Premium avec MSDN (875bb2e2-ee51-4775-9138-5395a9a1ff92)'
       azureContainerRegistry: 'hasdrubal'
@@ -28,6 +29,7 @@ jobs:
     displayName: Push services
     inputs:
       action: Push services
+      connectiontype: 'AzureRM'
       containerregistrytype: 'Azure Container Registry'
       azureSubscription: 'Visual Studio Premium avec MSDN (875bb2e2-ee51-4775-9138-5395a9a1ff92)'
       azureContainerRegistry: 'hasdrubal'
@@ -41,6 +43,7 @@ jobs:
     condition: eq(variables.isTag, 'True')
     inputs:
       action: Lock services
+      connectiontype: 'AzureRM'
       containerregistrytype: 'Azure Container Registry'
       azureSubscription: 'Visual Studio Premium avec MSDN (875bb2e2-ee51-4775-9138-5395a9a1ff92)'
       azureContainerRegistry: 'hasdrubal'
