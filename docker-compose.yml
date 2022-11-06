@@ -26,7 +26,7 @@ services:
      volumes:
        - ghost_data:/var/lib/ghost
      ports:
-       - "8080:2368"
+       - "3001:2368"
      restart: always
      environment:
        database__client: mysql
@@ -34,7 +34,7 @@ services:
        database__connection__user: ghostuser
        database__connection__password: ghost123
        database__connection__database: ghostdb
-       url: http://localhost:8080
+       url: http://localhost:3001
      networks:
        - app-tier
 
